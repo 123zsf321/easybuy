@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<body style="margin: 0px auto;width: 400px; padding-top: 100px">
+<h2 style="margin: 0px auto;width: 400px; text-align: center" >用户登录</h2>
+<div style="margin: 0px auto;width: 400px">
+    <table border="1px" cellspacing="1" cellpadding="1" width="400px">
+        <tr>
+            <td>登录名</td>
+            <td><input type="text" id="loginName" name="loginName"></td>
+        </tr>
+        <tr>
+            <td>密码</td>
+            <td><input type="password" id="password" name="password"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center">
+                <input type="button"  id="btnLogin" name="btnLogin" value="用户登录">
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#btnLogin').click(function(){
+            var name = $('#loginName').val();
+            var pwd = $('#password').val();
+            alert(name);
+            $.ajax({
+                type:'post',
+                url:'http://localhost:8080/login',
+                data:{'loginName':name,'password':pwd},
+                dataType:'json',
+                success:function(d){
+                    alert(d);
+                   /* var lname=d.obj.loginName
+                    sessionStorage.setItem("loginName",lname)
+                    location.href="index.html"*/
+                }
+
+            })
+
+        })
+    })
+
+
+</script>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zsf.dao.UserDao">
+    <select id="getAllUsers" resultType="com.zsf.domain.User">
+        select *
+        from  easybuy_user
+    </select>
+
+    <select id="getUserByName"  parameterType="java.lang.String" resultType="com.zsf.domain.User">
+        select *
+        from easybuy_user
+        <where>
+            <if test="userName!=null and userName!=''">
+                  userName like concat('%',#{userName},'%')
+            </if>
+        </where>
+    </select>
+
+
+    <select id="listUserByName" parameterType="java.lang.String" resultType="com.zsf.domain.User">
+        select *
+        from easybuy_user
+        <where>
+            <if test="name != null and name != ''">
+                `userName` like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+
+
+
+
+
+
+</mapper>
